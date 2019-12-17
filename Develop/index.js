@@ -15,41 +15,36 @@ async function promptUser() {
         },
         {
             type: "input",
-            name: "name",
-            message: "What is your name?"
-        },
-        {
-            type: "input",
             name: "github",
             message: "Enter your GitHub Username"
         }
 
     ]);
-    let { github } = data;
+    const { github, favColor } = data;
 
-    let profileData = axios.get(`https://api.github.com/users/${github}`);
+    console.log(favColor)
+    const profileData = await axios.get(`https://api.github.com/users/${github}`)
     console.log(profileData)
-    // let markdown = makeMarkdown(profileData.data);
-    // console.log(profileData.data)
+    const markdown = makeMarkdown(profileData.data, favColor );
+    console.log(markdown)
 
-
-    // writeFileAsync("github.md", markdown);
-
+    fs.writeFile(`${profileData.data.name}.md`, markdown, (err)=>{
+        if (err) throw err
+        console.log("wrote the file")
+    });
 
 };
-// function makeMarkdown(userImage, userProfile, location, userBio, publicRepos, followers, following) {
-//     this.userImage = userImage;
-//     this.userProfile = userProfile;
-//     this.location = location;
-//     this.userBio = userBio;
-//     this.publicRepos = publicRepos;
-//     this.followers = followers;
-//     this.following = following;
-
-//     makeMarkdown.prototype.printStats = function() {
-//         console.log("")
-//     }
-
-
+function makeMarkdown(userInfo, color) {
+return `# <span style="color:${color}"> ${userInfo.name}</span>  
+<img src="${userInfo.avatar_url}" alt="coder photo" height="75"><br>
+Username: ${userInfo.login}  
+Bio: ${userInfo.bio}  
+Repo URL: [repo link](${userInfo.html_url})  
+Public Repos:  ${userInfo.public_repos}  
+Followers: ${userInfo.followers}  
+Following: ${userInfo.following}  
+`
+ 
+}
 
 promptUser();
