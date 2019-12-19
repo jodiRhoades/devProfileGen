@@ -6,7 +6,3 @@ Repo URL: [repo link](https://github.com/jodiRhoades)
 Public Repos:  14  
 Followers: 19  
 Following: 17  
-
- 
-
-

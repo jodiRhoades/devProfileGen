@@ -25,17 +25,17 @@ async function promptUser() {
     console.log(favColor)
     const profileData = await axios.get(`https://api.github.com/users/${github}`)
     console.log(profileData)
-    const markdown = makeMarkdown(profileData.data, favColor );
+    const markdown = makeMarkdown(profileData.data, favColor);
     console.log(markdown)
 
-    fs.writeFile(`${profileData.data.name}.md`, markdown, (err)=>{
+    fs.writeFile(`${profileData.data.name}.md`, markdown, (err) => {
         if (err) throw err
         console.log("wrote the file")
     });
-
 };
+
 function makeMarkdown(userInfo, color) {
-return `# <span style="color:${color}"> ${userInfo.name}</span>  
+    return `# <span style="color:${color}"> ${userInfo.name}</span>  
 <img src="${userInfo.avatar_url}" alt="coder photo" height="75"><br>
 Username: ${userInfo.login}  
 Bio: ${userInfo.bio}  
@@ -44,7 +44,6 @@ Public Repos:  ${userInfo.public_repos}
 Followers: ${userInfo.followers}  
 Following: ${userInfo.following}  
 `
- 
 }
 
 promptUser();
