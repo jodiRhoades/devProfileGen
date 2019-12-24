@@ -170,5 +170,25 @@ function generateHTML(data) {
             zoom: .75; 
           } 
          }
-      </style>`
+      </style>
+      </head>
+      <body>
+      <img src="${data.avatar_url}" alt="coder photo" height="75">
+      <h1>Hi!</h1>
+      <h2>My name is ${data.name}!</h2>
+      <p>Username: ${data.login}</p>
+      <p>Location Map: <a href= "https://www.google.com/maps/place/Charlotte,+NC/@35.2030728,-80.9799136,11z/data=!3m1!4b1!4m5!3m4!1s0x88541fc4fc381a81:0x884650e6bf43d164!8m2!3d35.2270869!4d-80.8431267" >google link</a><br>Profile URL: <a href="${data.html_url}">profile link</a><br>Blog URL: <blog link> ${data.html_url}</p>
+      <p>Bio: ${data.bio}</p>
+      <p>Repo URL: <a href="${data.repos_url}">repo link</a></p>
+      <p>Public Repos:  ${data.public_repos}</p>
+      <p>Followers: ${data.followers}</p>
+      <p>GitHub stars: ${data.watchers_count}</p>
+      <p>Following: ${data.following}</p>      
+      </body>
+      </html>`
         }
+
+
+
+
+        exports.generateHTML = generateHTML
