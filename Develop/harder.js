@@ -45,30 +45,10 @@ async function promptUser() {
             if (err) return console.log(err);
             console.log(res);
         });        
-
-    
-
     } 
     catch(err) {
         console.log(err)
     }
    };
-
-function makepdf(userInfo, color) {
-    return `# <span style="color:${color}"> ${userInfo.name}</span>  
-<img src="${userInfo.avatar_url}" alt="coder photo" height="75"><br>
-Name: ${userInfo.name}
-Username: ${userInfo.login}  
-
-Profile URL: [profile link](${userInfo.html_url})  
-Blog URL: [blog link] ${userInfo.blog}
-Bio: ${userInfo.bio}  
-Repo URL: [repo link](${userInfo.repos_url})  
-Public Repos:  ${userInfo.public_repos}  
-Followers: ${userInfo.followers}  
-
-Following: ${userInfo.following}  
-`
-}
 
 promptUser();

@@ -188,45 +188,45 @@ function generateHTML(data) {
                         
                 <a href="${data.html_url}" class="nav-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
               </nav>
-          </div>
-        <main>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <h3>${data.bio}</h3>
-              </div>
-            </div>  
-            <div class="row">        
-              <div class="col">
-                <div class="card">
-                  <h3>Public Repos</h3>
-                    <h5>${data.public_repos}</h5>                
-                </div>
-              </div>          
-              <div class="col">
-                <div class="card">
-                  <h3>Followers</h3>
-                    <h5>${data.followers}</h5>
-                </div>
-              </div> 
-            </div>
-            <div class="row">   
-              <div class="col">
-                <div class="card">
-                  <h3>Following</h3>
-                    <h5>${data.following}</h5>
+          </div>          
+          <main>
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h3>${data.bio}</h3>
                 </div>
               </div>  
-              <div class="col">
-                <div class="card">
-                  <h3>GitHub Stars</h3>
-                    <h5>0</h5>
-                </div>
-              </div> 
+              <div class="row">        
+                <div class="col">
+                  <div class="card">
+                    <h3>Public Repos</h3>
+                      <h5>${data.public_repos}</h5>                
+                  </div>
+                </div>          
+                <div class="col">
+                  <div class="card">
+                    <h3>Followers</h3>
+                      <h5>${data.followers}</h5>
+                  </div>
+                </div> 
+              </div>
+              <div class="row">   
+                <div class="col">
+                  <div class="card">
+                    <h3>Following</h3>
+                      <h5>${data.following}</h5>
+                  </div>
+                </div>  
+                <div class="col">
+                  <div class="card">
+                    <h3>GitHub Stars</h3>
+                      <h5>0</h5>
+                  </div>
+                </div> 
+              </div>
             </div>
-          </div>
-        </main>  
-      </div>
+          </main>  
+        </div>
     </body>
     </html>`
 }
