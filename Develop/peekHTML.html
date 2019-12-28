@@ -110,7 +110,7 @@ function generateHTML(data) {
          border: 6px solid ${colors[data.color].photoBorderColor};
          box-shadow: rgba(0, 0, 0, 0.3) 4px 1px 20px 4px;
          }
-         .photo-header h1, .photo-header h2, .photo-header h4{
+         .photo-header h1, .photo-header h2 {
          width: 100%;
          text-align: center;
          }
@@ -178,56 +178,44 @@ function generateHTML(data) {
          <div class="wrapper">
           <div class="photo-header">
             <img src="${data.avatar_url}" alt="coder photo" height="75">
-              <h1>Hi!</h1>
-                <h2>My name is ${data.name}!</h2>
-                  <h4>Currently @ ${data.company}<h4>      
+            <h1>Hi!</h1>
+            <h2>My name is ${data.name}!</h2>
+            <h5>Currently @ ${data.company}<h5>      
               <nav class="links-nav">            
                 <a href="https://www.google.com/maps/place/${data.location}" class="nav-link" target="_blank"><i class="fas fa-location-arrow"></i> Charlotte, NC</a>
-                        
-                <a href="${data.blog}" class="nav-link" target="_blank"><i class="fas fa-rss"></i> Blog</a>
-                        
-                <a href="${data.html_url}" class="nav-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+              </nav>
+              <nav class="links-nav">            
+                <a href="${data.blog}"> class="nav-link" target="_blank"><i class="fas fa-blog"></i> Blog</a>
+              </nav>
+              <nav class="links-nav">            
+                <a href="${data.html_url}" class="nav-link" target="_blank"><i class="fas fa-github"></i></a>GitHub</a>
               </nav>
           </div>
-        <main>
-          <div class="container">
-            <div class="row">
-              <div class="col">
-                <h3>${data.bio}</h3>
-              </div>
-            </div>  
-            <div class="row">        
-              <div class="col">
-                <div class="card">
-                  <h3>Public Repos</h3>
-                    <h5>${data.public_repos}</h5>                
-                </div>
-              </div>          
-              <div class="col">
-                <div class="card">
-                  <h3>Followers</h3>
-                    <h5>${data.followers}</h5>
-                </div>
-              </div> 
-            </div>
-            <div class="row">   
-              <div class="col">
-                <div class="card">
-                  <h3>Following</h3>
-                    <h5>${data.following}</h5>
-                </div>
-              </div>  
-              <div class="col">
-                <div class="card">
-                  <h3>GitHub Stars</h3>
-                    <h5>0</h5>
-                </div>
-              </div> 
+      <main>
+         <div class="container">
+          <div class="row">
+            <div class="col">
+              <h3>Bio: ${data.bio}</h3>
             </div>
           </div>
-        </main>  
-      </div>
-    </body>
-    </html>`
-}
-exports.generateHTML = generateHTML
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <p>Repo URL: <a href="${data.repos_url}">repo link</a></p>                
+              </div>
+            </div>
+              <p>Repo URL: 
+              <p></p>
+              <p>Public Repos:  ${data.public_repos}</p>
+              <p>Followers: ${data.followers}</p>                
+              <p>Following: ${data.following}</p>      
+          </main>
+         </div>
+      </body>
+      </html>`
+        }
+
+
+
+
+        exports.generateHTML = generateHTML
