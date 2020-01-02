@@ -1,12 +1,9 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
-const { promisify } = require("util");
+const fs = require("fs")
+const convertFactory = require('electron-html-to');
 const axios = require("axios");
-const pdf = require("html-pdf");
 const { generateHTML } = require('./generateHTML')
-const options = { format: 'Letter' };
-const writeFileAsync = promisify(fs.writeFile);
-
+const path = require("path")
 async function promptUser() {
     try {
         const data = await inquirer.prompt([
@@ -36,15 +33,23 @@ async function promptUser() {
 
         const pdfText = generateHTML(profileData.data);
         console.log(pdfText)
+ 
+        var conversion = convertFactory({
+            converterPath: convertFactory.converters.PDF
+          }); 
+        conversion({ html: pdfText  }, function(err, result) {
+            if (err) {
+              return console.error(err);
+            }
+           
+            console.log(result.numberOfPages);
+            console.log(result.logs);
+            result.stream.pipe(
+                fs.createWriteStream(path.join(__dirname, 'resume.pdf'))
+            );
+            conversion.kill(); // necessary if you use the electron-server strategy, see bellow for details
+          });
 
-        fs.writeFile("test.HTML", pdfText, err => {
-            if (err) throw err
-            console.log("success")
-        })
-        pdf.create(pdfText, options).toFile('generateHTML.pdf', function (err, res) {
-            if (err) return console.log(err);
-            console.log(res);
-        });        
     } 
     catch(err) {
         console.log(err)
